@@ -8,7 +8,7 @@
 {{-- MODAL DETAIL Company --}}
 <!-- Modal -->
 
-@foreach ($employees as $comp)
+@foreach ($companies as $comp)
 
 <div class="modal fade" id="detailModalCompany{{ $comp->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -20,24 +20,24 @@
             </button>
         </div>
         <div class="modal-body">
-            <h2 class="mb-3">{{ $comp->company->name}}</h2>
+            <h2 class="mb-3">{{ $comp->name}}</h2>
 
                 <dl class="row">
                     <dt class="col-sm-3">Company Name</dt>
-                    <dd class="col-sm-9">:  {{ $comp->company->name }}</dd>
+                    <dd class="col-sm-9">:  {{ $comp->name }}</dd>
 
                     <dt class="col-sm-3">Email</dt>
-                    <dd class="col-sm-9">: {{ $comp->company->email }}</dd>
+                    <dd class="col-sm-9">: {{ $comp->email }}</dd>
                 
                     <dt class="col-sm-3">Website</dt>
-                    <dd class="col-sm-9">: {{ $comp->company->website }}</dd>
+                    <dd class="col-sm-9">: {{ $comp->website }}</dd>
 
                     <dt class="col-sm-3 text-truncate">Company Logo</dt>
                     <dd class="col-sm-9">:  
                         
-                        @if ($comp->company->logo)
-                        <img class="img-preview img-fluid mb-3 col-5 d-block" src="{{ asset('storage/'.$comp->company->logo) }}">
-                        <input type="hidden" name="oldImage" value="{{ $comp->company->logo }}">
+                        @if ($comp->logo && $comp->id)
+                        <img class="img-preview img-fluid mb-3 col-5 d-block" src="{{ asset('storage/'.$comp->logo) }}">
+                        <input type="hidden" name="oldImage" value="{{ $comp->logo }}">
                         @else
                             <img class="img-preview img-fluid mb-3 col-5">
                         @endif
